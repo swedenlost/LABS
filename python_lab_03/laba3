@@ -1,0 +1,261 @@
+# ЗАДАНИЕ 1
+def greet(name):
+    print(f"Привет, {name}!")
+
+
+def square(number):
+    return number ** 2
+
+
+def max_of_two(a, b):
+    if a > b:
+        return a
+    return b
+
+
+
+greet("Света")
+greet("Светландосик")
+
+print(square(4))   # 16
+print(square(7))   # 49
+
+print(max_of_two(10, 3))   # 10
+print(max_of_two(-5, -2))  # -2
+
+
+
+# ЗАДАНИЕ 2
+def calculate_rectangle(width, height):
+    return width * height
+
+
+def calculate_perimeter(width, height):
+    return 2 * (width + height)
+
+
+def describe_rectangle(width, height, unit="cm"):
+    print(f"Прямоугольник: {width} {unit} x {height} {unit}")
+    print(f"Площадь: {calculate_rectangle(width, height)} {unit}²")
+    print(f"Периметр: {calculate_perimeter(width, height)} {unit}")
+
+
+# Вызов без unit — используется "cm"
+describe_rectangle(5, 3)
+
+# Вызов с unit — используется "м"
+describe_rectangle(2, 4, unit="м")
+
+
+
+
+# ЗАДАНИЕ 3
+value = 10
+
+
+def example():
+    value = 20  # локальная переменная и она не меняет глобальную
+    print(value)
+
+
+example()   # 20
+print(value)  # 10
+
+
+
+# ЗАДАНИЕ 4
+numbers = [5, 12, 7, 3, 20, 8, 15, 1, 9, 14]
+
+print(numbers[0])    # первый
+print(numbers[2])    # третий
+print(numbers[-1])   # последний
+
+numbers[1] = 100     # изменили второй элемент
+numbers.append(42)   # добавили в конец
+numbers.remove(7)    # удалили значение 7
+
+print(numbers)
+print(len(numbers))
+
+
+
+# ЗАДАНИЕ 5
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+print(numbers[:3])      # первые три: [1, 2, 3]
+print(numbers[-3:])     # последние три: [8, 9, 10]
+print(numbers[2:7])     # с 3-го по 7-й: [3, 4, 5, 6, 7]
+print(numbers[::2])     # каждый второй: [1, 3, 5, 7, 9]
+print(numbers[::-1])    # в обратном порядке: [10, 9, ..., 1]
+
+
+# ЗАДАНИЕ 6
+measurements = (12.5, 13.0, 11.8, 14.2, 12.9, 13.5, 12.1, 13.8)
+
+print(measurements[0])
+print(measurements[-1])
+print(measurements[2:5])
+
+# measurements[0] = 99  # TypeError: 'tuple' object does not support item assignment
+
+first, second = measurements[0], measurements[1]
+print(first, second)
+
+# Преобразование
+temp_list = list(measurements)
+temp_list[0] = 99.9
+measurements = tuple(temp_list)
+print(measurements)
+
+
+
+# ЗАДАНИЕ 7
+numbers = [5, 8, 2, 10, 4]
+
+print(len(numbers))          # 5
+print(sum(numbers))          # 29
+print(min(numbers))          # 2
+print(max(numbers))          # 10
+print(sum(numbers) / len(numbers))  # среднее
+
+sorted_copy = sorted(numbers)   # новый список
+print(sorted_copy)
+print(numbers)                  # исходный не изменился
+
+numbers.sort()                  # изменяет сам список
+print(numbers)
+
+
+
+# ЗАДАНИЕ 8
+def calculate_sum(numbers):
+    total = 0
+    for n in numbers:
+        total += n
+    return total
+
+
+def find_min(numbers):
+    minimum = numbers[0]
+    for n in numbers:
+        if n < minimum:
+            minimum = n
+    return minimum
+
+
+def find_max(numbers):
+    maximum = numbers[0]
+    for n in numbers:
+        if n > maximum:
+            maximum = n
+    return maximum
+
+
+data = [5, 8, 2, 10, 4]
+print(calculate_sum(data))  # 29
+print(find_min(data))       # 2
+print(find_max(data))       # 10
+
+# Сравнение со встроенными
+print(sum(data), min(data), max(data))
+
+
+
+# ЗАДАНИЕ 9 
+def find_element(numbers, target):
+    for i in range(len(numbers)):
+        if numbers[i] == target:
+            return i
+    return -1
+
+
+data = [5, 8, 2, 10, 4]
+print(find_element(data, 10))   # 3
+print(find_element(data, 99))   # -1
+
+
+# ЗАДАНИЕ 10
+def analyze(numbers):
+    return find_min(numbers), find_max(numbers), calculate_sum(numbers) / len(numbers)
+
+
+minimum, maximum, average = analyze([5, 8, 2, 10, 4])
+print(minimum, maximum, average)
+
+
+# ЗАДАНИЕ 11
+numbers = [-10, 3, -2, 8, -5]
+
+print(sorted(numbers))                       # [-10, -5, -2, 3, 8]
+print(sorted(numbers, key=lambda x: abs(x))) # [-2, 3, -5, 8, -10]
+
+
+
+
+
+
+# ЗАДАНИЕ 12 САМОСТОЯТЕЛЬНАЯ РАБОТА 
+def calculate_average(measurements):
+    total = 0
+    for m in measurements:
+        total += m
+    return total / len(measurements)
+
+
+def find_minimum(measurements):
+    minimum = measurements[0]
+    for m in measurements:
+        if m < minimum:
+            minimum = m
+    return minimum
+
+
+def find_maximum(measurements):
+    maximum = measurements[0]
+    for m in measurements:
+        if m > maximum:
+            maximum = m
+    return maximum
+
+
+def count_above_average(measurements):
+    avg = calculate_average(measurements)
+    count = 0
+    for m in measurements:
+        if m > avg:
+            count += 1
+    return count
+
+
+def find_value(measurements, target):
+    for i in range(len(measurements)):
+        if measurements[i] == target:
+            return i
+    return -1
+
+
+def analyze_measurements(measurements):
+    return find_minimum(measurements), find_maximum(measurements), calculate_average(measurements)
+
+
+def main():
+    measurements = [12.5, 13.0, 11.8, 14.2, 12.9, 13.5, 12.1, 13.8, 12.7, 13.3]
+
+    minimum, maximum, average = analyze_measurements(measurements)
+
+    print(f"Количество измерений: {len(measurements)}")
+    print(f"Минимум: {minimum}")
+    print(f"Максимум: {maximum}")
+    print(f"Среднее: {average:.2f}")
+    print(f"Выше среднего: {count_above_average(measurements)}")
+
+    target = float(input("Введите значение для поиска: "))
+    index = find_value(measurements, target)
+    if index == -1:
+        print("Значение не найдено")
+    else:
+        print(f"Значение найдено на позиции {index}")
+
+
+if __name__ == "__main__":
+    main()
